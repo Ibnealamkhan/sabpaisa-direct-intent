@@ -273,7 +273,7 @@ try {
         echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
         
     } else {
-        throw new Exception("Method not allowed. Use POST or GET.");
+        throw new Exception("Method not allowed. Use POST or GET. use browser");
     }
     
 } catch (Exception $e) {
