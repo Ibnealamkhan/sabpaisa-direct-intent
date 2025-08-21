@@ -11,13 +11,10 @@ $payerAddress='Guwahati,Assam';
 $amountType='INR';
 $mcc=4900;
 $channelId='M';
-
-
-
 $encData="clientCode=".$clientCode."&transUserName=".$username."&transUserPassword=".$password."&payerName=".$name.
 "&payerMobile=".$number."&payerEmail=".$email."&payerAddress=".$payerAddress."&clientTxnId=".$txnid.
 "&amount=".$amount."&amountType=".$amountType."&mcc=".$mcc."&channelId=".$channelId."&callbackUrl=".$callbackUrl."&udf1=&udf2=";
-				
+			
 $AesCipher = new AesCipher(); 
 $token = $AesCipher->encrypt($authKey, $authIV, $encData);
 
