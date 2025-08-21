@@ -23,18 +23,9 @@ $token = $AesCipher->encrypt($authKey, $authIV, $encData);
 
 $result = $sabpaisa->processCompletePayment($token, $clientCode,$txnid);
 
-echo $result;
-
-/*
-if ($result['success']) {
-
 echo json_encode($result);
 
 
-} else {
-    echo "Payment initialization failed. Status Code: " . $result['status_code'] . "\n";
-}
-    */
         
 
 

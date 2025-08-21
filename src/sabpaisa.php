@@ -63,6 +63,7 @@ class SabPaisaPayment {
                 return [
                 'success' => false,
                 'status_code' => $statusCode,
+                'message' => 'Error posting data',
                 'cookies' => $cookies
             ];
             }
@@ -70,6 +71,7 @@ class SabPaisaPayment {
         } catch (Exception $e) {
               return [
                 'success' => false,
+                 'message' => 'URL not Whitelisted OR Duplicate TXN id',
                 'status_code' => 500
             ];
         }
@@ -109,7 +111,28 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 $resp = curl_exec($curl);
 curl_close($curl);
 
-return $resp;
+$data = json_decode($resp,true);
+
+if($data['tmpTransStatus']==='SUCCESS'){
+    
+       return [
+                'success' => true,
+                'status_code' => 200,
+                'message' => 'Intent recieved',
+                'txnid' => $txnid,
+                'intent' => $data['upiQrValue']
+            ];
+            
+    
+} else {
+    
+             return [
+                'success' => false,
+                'status_code' => 500,
+                'message' => 'Intent not enabled please contact RM'
+            ];
+            
+}
 
        
 
