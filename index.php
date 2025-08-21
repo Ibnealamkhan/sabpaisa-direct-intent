@@ -17,9 +17,7 @@ $encData="clientCode=".$clientCode."&transUserName=".$username."&transUserPasswo
 			
 $AesCipher = new AesCipher(); 
 $token = $AesCipher->encrypt($authKey, $authIV, $encData);
-
 $result = $sabpaisa->processCompletePayment($token, $clientCode,$txnid);
-
 echo json_encode($result);
 
 
