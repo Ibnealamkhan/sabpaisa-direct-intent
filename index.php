@@ -1,5 +1,6 @@
 <?php
 include_once 'config.php';
+$sabpaisa = new SabPaisaPayment();
 $name         = "Alam Khan";
 $email        = "ibnealamkhan811@gmail.com";
 $number       = 7086303816;
@@ -13,14 +14,27 @@ $channelId='M';
 
 
 
-$encData="clientCode=".$clientCode."&transUserName=".$username."&transUserPassword=".$password."&payerName=".$payerName.
+$encData="clientCode=".$clientCode."&transUserName=".$username."&transUserPassword=".$password."&payerName=".$name.
 "&payerMobile=".$number."&payerEmail=".$email."&payerAddress=".$payerAddress."&clientTxnId=".$txnid.
 "&amount=".$amount."&amountType=".$amountType."&mcc=".$mcc."&channelId=".$channelId."&callbackUrl=".$callbackUrl."&udf1=&udf2=";
 				
 $AesCipher = new AesCipher(); 
 $token = $AesCipher->encrypt($authKey, $authIV, $encData);
 
-   echo  $sabpaisa->processCompletePayment($token, $clientCode, $paymentData);
+$result = $sabpaisa->processCompletePayment($token, $clientCode,$txnid);
+
+echo $result;
+
+/*
+if ($result['success']) {
+
+echo json_encode($result);
+
+
+} else {
+    echo "Payment initialization failed. Status Code: " . $result['status_code'] . "\n";
+}
+    */
         
 
 

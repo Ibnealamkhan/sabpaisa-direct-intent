@@ -62,7 +62,8 @@ class SabPaisaPayment {
             } else {
                 return [
                 'success' => false,
-                'status_code' => $statusCode
+                'status_code' => $statusCode,
+                'cookies' => $cookies
             ];
             }
             
@@ -76,13 +77,45 @@ class SabPaisaPayment {
     
   
     
-    public function processCompletePayment($encData, $clientCode) {
+    public function processCompletePayment($encData, $clientCode,$txnid) {
         // Step 1: Initialize payment
         
         
-        return $this->initializePayment($encData, $clientCode);
+        $result = $this->initializePayment($encData, $clientCode,$txnid);
         
-        
+        if($result['success']) {
+
+
+$url = "https://api.onegateway.in/sabpaisa/composer/getIntent.php";
+
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$headers = array(
+   "Content-Type: application/x-www-form-urlencoded",
+);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$data = "clientCode=$clientCode&txnid=$txnid&cooikes=".urlencode(json_encode($result['cookies']))."&encData=$encData";
+
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+//for debug only!
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+$resp = curl_exec($curl);
+curl_close($curl);
+
+return $resp;
+
+       
+
+        } else {
+            return $result;
+        }
         
         
         
