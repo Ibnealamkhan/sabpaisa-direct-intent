@@ -1,5 +1,31 @@
 {
-    "require": {
-        "guzzlehttp/guzzle": "^7.9"
+  "name": "ibnealamkhan/sabpaisa-direct-intent",
+  "description": "SabPaisa Direct Intent Payment Integration using Guzzle in PHP.",
+  "type": "project",
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SabPaisaDirectIntent\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Ibne Alam Khan",
+      "email": "ibnealamkhan811@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "keywords": [
+    "sabpaisa",
+    "payment",
+    "upi",
+    "intent",
+    "guzzle",
+    "php"
+  ],
+  "homepage": "https://github.com/ibnealamkhan/sabpaisa-direct-intent"
 }
