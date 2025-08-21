@@ -22,5 +22,8 @@ include_once 'config.php';
 include_once 'Sabpaisa.php';
 
 $sabpaisa = new Sabpaisa();
+
+$result = $sabpaisa->processCompletePayment($token, $clientCode,$txnid);
+
 // ...initialize payment as shown in index.php...
 ```
