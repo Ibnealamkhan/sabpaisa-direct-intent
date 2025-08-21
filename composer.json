@@ -2,6 +2,8 @@
   "name": "ibnealamkhan/sabpaisa-direct-intent",
   "description": "SabPaisa Direct Intent Payment Integration using Guzzle in PHP.",
   "type": "project",
+     "version": "1.0.0",
+    "minimum-stability": "stable",
   "require": {
     "php": ">=7.2",
     "guzzlehttp/guzzle": "^7.0"
