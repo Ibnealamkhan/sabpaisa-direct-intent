@@ -26,4 +26,7 @@ $sabpaisa = new Sabpaisa();
 $result = $sabpaisa->processCompletePayment($token, $clientCode,$txnid);
 
 // ...initialize payment as shown in index.php...
-```
+
+Goto src/sabpaisa.php 
+    'origin' => 'Your whitlisted sabpaisa URL',
+    'referer' => 'Your whitlisted sabpaisa URL'

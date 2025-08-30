@@ -27,7 +27,9 @@ class SabPaisaPayment {
                 'Accept-Language' => 'en-GB,en-US;q=0.9,en;q=0.8',
                 'Accept-Encoding' => 'gzip, deflate',
                 'Connection' => 'keep-alive',
-                'Upgrade-Insecure-Requests' => '1'
+                'Upgrade-Insecure-Requests' => '1',
+                'origin' => '',
+                'referer' => ''
             ]
         ]);
     }
